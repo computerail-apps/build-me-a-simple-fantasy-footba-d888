@@ -6,17 +6,16 @@ const POSITION_STYLES: Record<string, string> = {
   RB: 'bg-success/15 text-success border-success/30',
   WR: 'bg-primary/15 text-primary border-primary/30',
   TE: 'bg-warning/15 text-warning border-warning/30',
-  FLEX: 'bg-muted text-muted-foreground border-border',
-  DEF: 'bg-secondary/40 text-secondary-foreground border-border',
-  K: 'bg-accent/20 text-accent-foreground border-border',
+  FLEX: 'bg-accent/15 text-accent border-accent/30',
+  DEF: 'bg-muted text-muted-foreground border-border',
+  K: 'bg-muted text-muted-foreground border-border',
 };
 
 export function PositionBadge({ position }: { position: string }) {
-  const key = position?.toUpperCase() ?? '';
-  const cls = POSITION_STYLES[key] ?? 'bg-muted text-muted-foreground border-border';
+  const style = POSITION_STYLES[position] ?? 'bg-muted text-muted-foreground border-border';
   return (
-    <Badge variant="outline" className={cn('font-mono text-micro', cls)}>
-      {key || '—'}
+    <Badge variant="outline" className={cn('border font-mono text-micro tracking-wide', style)}>
+      {position}
     </Badge>
   );
 }

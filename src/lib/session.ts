@@ -1,17 +1,10 @@
-const SESSION_KEY = 'gridiron_session_id';
-
-function generateId(): string {
-  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
-    return crypto.randomUUID();
-  }
-  return `sess_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-}
+const KEY = 'gridiron_session_id';
 
 export function getSessionId(): string {
-  let id = localStorage.getItem(SESSION_KEY);
+  let id = localStorage.getItem(KEY);
   if (!id) {
-    id = generateId();
-    localStorage.setItem(SESSION_KEY, id);
+    id = crypto.randomUUID();
+    localStorage.setItem(KEY, id);
   }
   return id;
 }
