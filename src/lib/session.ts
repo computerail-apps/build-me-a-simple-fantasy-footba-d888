@@ -15,13 +15,3 @@ export function getSessionId(): string {
   }
   return id;
 }
-
-const USERNAME_KEY = 'gridiron_last_username';
-
-export function getLastUsername(): string {
-  return localStorage.getItem(USERNAME_KEY) ?? '';
-}
-
-export function setLastUsername(username: string): void {
-  localStorage.setItem(USERNAME_KEY, username);
-}
